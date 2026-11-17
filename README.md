@@ -42,16 +42,28 @@ npm run build   # genera out/
 
 `out/` es el sitio completo; no hace falta servidor. Lleva `.nojekyll` para GitHub Pages.
 
-**GitHub Pages**
+**Cloudflare Workers** (lo que usa el proyecto)
 
-```bash
-git init && git add . && git commit -m "Sitio institucional en Next.js"
-gh repo create quien-gana-web --public --source=. --push
-```
+El deploy lo hace `npx wrangler deploy` leyendo `wrangler.jsonc`, que sube `out/` como
+assets estáticos. No hay Worker: es sólo un sitio de archivos.
 
-Después, un workflow que corra `npm ci && npm run build` y publique `out/`, o subí `out/` a la rama `gh-pages`.
+No borres `wrangler.jsonc`. Si no está, wrangler detecta "Next.js", asume una app con
+servidor y corre la migración a OpenNext, que falla con
+`ENOENT .next/standalone/.next/server/pages-manifest.json` — un export estático no
+genera `.next/standalone`.
 
-**Dominio propio (`quien-gana.app`)**: agregá `public/CNAME` con `quien-gana.app`, configurá el DNS y activá *Enforce HTTPS*.
+En los settings del proyecto en Cloudflare:
+
+- Build command → `npm run build`
+- Deploy command → `npx wrangler deploy`
+
+**GitHub Pages** (alternativa)
+
+Workflow que corra `npm ci && npm run build` y publique `out/` con
+`actions/configure-pages`, `upload-pages-artifact` y `deploy-pages`, más Pages en modo
+*GitHub Actions* en Settings. `out/` ya lleva `.nojekyll`.
+
+**Dominio propio (`quien-gana.app`)**: configuralo en Cloudflare (Workers → Domains & Routes).
 `metadataBase` ya apunta a `https://quien-gana.app` en `app/layout.tsx`.
 
 En App Store Connect:

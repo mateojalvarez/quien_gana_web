@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "quien-gana-web",
+  "compatibility_date": "2026-11-16",
+  // El sitio es un export estático de Next (output: "export"), así que no hay
+  // Worker: se suben los archivos de out/ como assets y Cloudflare los sirve.
+  // Sin esto, wrangler detecta "Next.js", asume una app con servidor y corre la
+  // migración a OpenNext, que falla porque un export no genera .next/standalone.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
