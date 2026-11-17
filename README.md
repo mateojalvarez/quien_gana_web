@@ -1,6 +1,6 @@
 # ¿Quién gana? — sitio institucional
 
-Webapp en **Next.js 15** (App Router, TypeScript) de la app **¿Quién gana?**.
+Webapp en **Next.js 16** (App Router, TypeScript, Turbopack) de la app **¿Quién gana?**.
 Se exporta como sitio estático (`output: "export"`), así que se publica en cualquier hosting sin servidor.
 
 | Ruta | Uso |
