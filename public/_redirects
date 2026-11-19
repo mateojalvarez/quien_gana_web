@@ -1,0 +1,5 @@
+# El enlace de invitación de la app es quien-gana.app/g/<código>. Cuando los
+# enlaces universales están activos, iOS lo intercepta y esta página no se
+# carga nunca; esto es el camino para todos los demás casos. El sitio es un
+# export estático, así que no hay ruta dinámica: el código pasa como query.
+/g/* /invitacion/?code=:splat 302
