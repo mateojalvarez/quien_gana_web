@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://quien-gana.app"),
   title: "¿Quién gana? — Hub de mesa para iPhone",
   description:
-    "Anotador, Corazones, dados, pulsador y reloj de arena en una sola app. Sin anuncios, funciona sin conexión y con modo oscuro.",
+    "Corazones, truco, generala, anotador libre, dados, reloj, pulsador y equipos en una sola app. Sin anuncios, funciona sin conexión y con modo oscuro.",
   icons: {
     icon: [{ url: "/assets/img/favicon-32.png", sizes: "32x32", type: "image/png" }],
     apple: "/assets/img/apple-touch-icon.png",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "¿Quién gana? — Hub de mesa",
     description:
-      "Anotador, Corazones, dados, pulsador y reloj de arena en una sola app.",
+      "Ocho juegos y herramientas de mesa en una sola app, con grupos para tus jugadores de siempre.",
     images: ["/assets/img/icono-512.png"],
   },
 };

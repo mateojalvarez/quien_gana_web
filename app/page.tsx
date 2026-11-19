@@ -2,36 +2,89 @@ import Link from "next/link";
 import SiteShell from "@/components/SiteShell";
 import { ArrowRight } from "@/components/icons";
 
-const juegos = [
+type Juego = {
+  kind: string;
+  name: string;
+  desc: string;
+  img: string;
+  tone: "mostaza" | "tomate" | "salvia" | "rosa" | "crema";
+  grande?: boolean;
+};
+
+// Mismo catálogo, colores y orden que la pestaña Juegos de la app.
+const juegos: Juego[] = [
   {
-    kind: "Cartas",
+    kind: "Anotador",
     name: "Corazones",
-    desc: "Pedidos, bazas y bonus con las reglas ya armadas: rota el repartidor y el puntaje se cuenta solo.",
+    desc: "Pedidos, bazas y bonus con las reglas ya armadas: el puntaje se cuenta solo.",
     img: "/assets/img/clay/corazon.webp",
+    tone: "mostaza",
+    grande: true,
+  },
+  {
+    kind: "Anotador",
+    name: "Truco",
+    desc: "A 15 o a 30, con fósforos. Y en la pantalla bloqueada: cantás desde ahí sin abrir la app.",
+    img: "/assets/img/clay/carta-espada.webp",
+    tone: "salvia",
+    grande: true,
+  },
+  {
+    kind: "Anotador",
+    name: "Generala",
+    desc: "Dados y planilla juntos: fijás los que te sirven y te sugiere dónde anotar.",
+    img: "/assets/img/clay/dado.webp",
+    tone: "crema",
   },
   {
     kind: "Libre",
-    name: "Anotador",
-    desc: "Puntos por ronda para cualquier juego. Cargás jugadores y los totales se calculan solos.",
+    name: "Anotador libre",
+    desc: "Puntos por ronda para cualquier juego. Los totales se calculan solos.",
     img: "/assets/img/clay/lapiz.webp",
+    tone: "rosa",
   },
   {
     kind: "Azar",
     name: "Dados",
-    desc: "Tocá los dados o el botón y tirá. Ninguno se cae abajo del sillón.",
+    desc: "De 4 a 20 caras, hasta seis a la vez. Ninguno se cae abajo del sillón.",
     img: "/assets/img/clay/dado.webp",
+    tone: "tomate",
+  },
+  {
+    kind: "Turnos",
+    name: "Reloj",
+    desc: "Turnos con cuenta regresiva, a la vista de todos. La pantalla no se apaga.",
+    img: "/assets/img/clay/reloj-arena.webp",
+    tone: "crema",
   },
   {
     kind: "Rapidez",
     name: "Pulsador",
-    desc: "Un teléfono, varios jugadores: el primero que toca su zona se queda con el turno.",
+    desc: "El primero que toca gana. En un teléfono o en varios, con una sala por código.",
     img: "/assets/img/clay/pulsador.webp",
+    tone: "salvia",
   },
   {
-    kind: "Turnos",
-    name: "Reloj de arena",
-    desc: "Tiempo por turno, a la vista de todos. Elegís la duración y la pantalla no se apaga.",
-    img: "/assets/img/clay/reloj-arena.webp",
+    kind: "Organizar",
+    name: "Equipos",
+    desc: "Reparte a los jugadores al azar y respeta quiénes no pueden quedar juntos.",
+    img: "/assets/img/clay/esferas.webp",
+    tone: "rosa",
+  },
+];
+
+const conQuien = [
+  {
+    title: "Grupos",
+    desc: "Armás el grupo una vez e invitás por enlace o QR. Los nombres quedan cargados para todas las partidas.",
+  },
+  {
+    title: "También sin cuenta",
+    desc: "Podés sumar a alguien que no tiene la app: queda sólo en tu teléfono y no lo ve nadie más del grupo.",
+  },
+  {
+    title: "Pulsador compartido",
+    desc: "Abrís una sala con código y cada uno pulsa desde su teléfono, con los relojes sincronizados.",
   },
 ];
 
@@ -48,8 +101,8 @@ const datos = [
   },
   {
     num: "∞",
-    title: "Sin conexión",
-    desc: "Todo funciona offline. Cuando vuelve la señal, se sincroniza solo.",
+    title: "Partidas sin conexión",
+    desc: "Anotás offline y se sincroniza solo. Los grupos y las salas del pulsador sí piden internet.",
   },
   {
     num: "0",
@@ -66,14 +119,14 @@ export default function Home() {
           <div className="hero__chips">
             <span className="chip chip--fill">Hub de mesa</span>
             <span className="chip">iPhone · iOS</span>
-            <span className="chip num">v1.0</span>
+            <span className="chip num">8 juegos</span>
           </div>
           <h1 id="titulo">
             ¿Quién <span className="mark">gana</span>?
           </h1>
           <p className="hero__lede">
-            <strong>Anotador, Corazones, dados, pulsador y reloj de arena</strong> en una sola app.
-            Para la sobremesa, la noche de juegos o la partida que nunca termina.
+            <strong>Corazones, truco, generala, anotador libre, dados, reloj, pulsador y equipos</strong>{" "}
+            en una sola app. Para la sobremesa, la noche de juegos o la partida que nunca termina.
           </p>
           <div className="hero__cta">
             <span className="btn btn--solid" aria-disabled="true">
@@ -98,12 +151,15 @@ export default function Home() {
 
       <section className="section" id="juegos" aria-labelledby="h-juegos">
         <div className="section__head">
-          <span className="eyebrow">Tus juegos · 5 de 5</span>
+          <span className="eyebrow">Tus juegos · 8 de 8</span>
           <h2 id="h-juegos">Todo lo que va arriba de la mesa</h2>
         </div>
         <ul className="tools">
           {juegos.map((j) => (
-            <li className="tool" key={j.name}>
+            <li
+              className={`tool tool--${j.tone}${j.grande ? " tool--lg" : ""}`}
+              key={j.name}
+            >
               <span className="tool__kind">{j.kind}</span>
               <h3>{j.name}</h3>
               <p>{j.desc}</p>
@@ -112,6 +168,25 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="section" aria-labelledby="h-grupos">
+        <div className="section__head">
+          <span className="eyebrow">Con quién jugás</span>
+          <h2 id="h-grupos">Los de siempre, ya cargados</h2>
+          <p>
+            Los grupos guardan a tus jugadores habituales, así no escribís los mismos nombres cada
+            viernes.
+          </p>
+        </div>
+        <div className="facts facts--3">
+          {conQuien.map((c) => (
+            <div className="fact" key={c.title}>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="section" aria-labelledby="h-como">

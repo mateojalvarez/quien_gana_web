@@ -15,6 +15,7 @@
   --tomate: #EF7A57;
   --salvia: #86C1B7;
   --rosa: #F3C2C9;
+  --crema: #EFE6D8;
   --on-card: #151110;     /* el texto sobre tarjeta de color nunca cambia */
 
   --ok: #1F6B5F;
@@ -218,30 +219,35 @@ main { flex: 1; }
 .tool {
   position: relative;
   grid-column: span 2;
-  min-height: 216px;
+  min-height: 196px;
   border-radius: var(--r-card-lg);
   padding: 20px;
   color: var(--on-card);
   display: flex; flex-direction: column; gap: 3px;
 }
-.tool:nth-child(1) { grid-column: span 3; background: var(--mostaza); }
-.tool:nth-child(2) { grid-column: span 3; background: var(--rosa); }
-.tool:nth-child(3) { background: var(--tomate); }
-.tool:nth-child(4) { background: var(--salvia); }
-.tool:nth-child(5) { background: #EFE6D8; }  /* crema fija: las tarjetas de color no cambian en oscuro */
+/* Las tarjetas de color no cambian en oscuro: el texto siempre va en tinta. */
+.tool--mostaza { background: var(--mostaza); }
+.tool--tomate  { background: var(--tomate); }
+.tool--salvia  { background: var(--salvia); }
+.tool--rosa    { background: var(--rosa); }
+.tool--crema   { background: var(--crema); }
+
+.tool--lg { grid-column: span 3; min-height: 216px; }
+
 .tool__kind { font-size: 13px; font-weight: 600; }
 .tool h3 {
   margin: 0;
   font-weight: 800; font-size: 27px; line-height: 1.05; letter-spacing: -0.02em;
 }
-.tool p { margin: 6px 0 0; font-size: 15px; line-height: 1.35; max-width: 20ch; }
+.tool p { margin: 6px 0 0; font-size: 15px; line-height: 1.35; max-width: 23ch; }
+.tool--lg p { max-width: 26ch; }
 .tool img {
-  position: absolute; right: -10px; bottom: -6px;
-  width: 128px; height: 128px; object-fit: contain;
+  position: absolute; right: -8px; top: -18px;
+  width: 104px; height: 104px; object-fit: contain;
   filter: drop-shadow(0 10px 12px rgba(40, 20, 8, 0.26));
   pointer-events: none;
 }
-.tool:nth-child(n+3) img { top: -18px; bottom: auto; width: 104px; height: 104px; }
+.tool--lg img { right: -10px; top: auto; bottom: -6px; width: 128px; height: 128px; }
 
 /* Datos */
 .facts {
@@ -249,6 +255,7 @@ main { flex: 1; }
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
+.facts--3 { grid-template-columns: repeat(3, 1fr); }
 .fact {
   border: 1.5px solid var(--line);
   border-radius: var(--r-card);
@@ -430,9 +437,8 @@ table.data th { font-size: 13px; font-weight: 700; color: var(--muted); }
   .hero { grid-template-columns: 1fr; }
   .hero__art { max-width: 420px; }
   .tools { grid-template-columns: repeat(2, 1fr); }
-  .tool, .tool:nth-child(1), .tool:nth-child(2) { grid-column: span 1; }
-  .tool:nth-child(5) { grid-column: span 2; }
-  .facts { grid-template-columns: repeat(2, 1fr); }
+  .tool, .tool--lg { grid-column: span 1; }
+  .facts, .facts--3 { grid-template-columns: repeat(2, 1fr); }
   .doc { grid-template-columns: 1fr; }
   .toc ol { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
   .toc a { border: 1.5px solid var(--line); }
@@ -448,7 +454,10 @@ table.data th { font-size: 13px; font-weight: 700; color: var(--muted); }
   .nav a { padding: 0 12px; font-size: 14.5px; }
   .nav .hide-sm { display: none; }
   .tools { grid-template-columns: 1fr; }
-  .tool, .tool:nth-child(5) { grid-column: span 1; min-height: 190px; }
-  .facts { grid-template-columns: 1fr; }
+  .tool, .tool--lg { grid-column: span 1; min-height: 186px; }
+  /* En una columna la tarjeta es angosta: la arcilla no debe tapar el texto. */
+  .tool p, .tool--lg p { max-width: 21ch; }
+  .tool--lg img { width: 108px; height: 108px; right: -12px; bottom: -8px; }
+  .facts, .facts--3 { grid-template-columns: 1fr; }
   .hero__cta .btn { width: 100%; }
 }
