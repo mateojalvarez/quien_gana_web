@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["X77V463WTL.com.mateoalvarez.quiengana"],
+        "components": [
+          { "/": "/g/*", "comment": "Invitaciones a grupos" }
+        ]
+      }
+    ]
+  }
+}

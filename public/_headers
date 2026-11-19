@@ -1,0 +1,5 @@
+# Cloudflare lee este archivo desde la raíz de los assets (out/).
+# El apple-app-site-association va sin extensión, así que sin esto Cloudflare
+# lo sirve como application/octet-stream y iOS lo descarta.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
