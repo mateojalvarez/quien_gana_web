@@ -222,6 +222,9 @@ main { flex: 1; }
   min-height: 196px;
   border-radius: var(--r-card-lg);
   padding: 20px;
+  /* La arcilla va adentro de la tarjeta, con aire: nada sobresale ni se corta. */
+  padding-right: 112px;
+  overflow: hidden;
   color: var(--on-card);
   display: flex; flex-direction: column; gap: 3px;
 }
@@ -242,12 +245,13 @@ main { flex: 1; }
 .tool p { margin: 6px 0 0; font-size: 15px; line-height: 1.35; max-width: 23ch; }
 .tool--lg p { max-width: 26ch; }
 .tool img {
-  position: absolute; right: -8px; top: -18px;
-  width: 104px; height: 104px; object-fit: contain;
+  position: absolute; right: 14px; top: 14px;
+  width: 84px; height: 84px; object-fit: contain;
   filter: drop-shadow(0 10px 12px rgba(40, 20, 8, 0.26));
   pointer-events: none;
 }
-.tool--lg img { right: -10px; top: auto; bottom: -6px; width: 128px; height: 128px; }
+.tool--lg { padding-right: 140px; }
+.tool--lg img { right: 16px; top: auto; bottom: 16px; width: 112px; height: 112px; }
 
 /* Datos */
 .facts {
@@ -431,6 +435,38 @@ table.data th { font-size: 13px; font-weight: 700; color: var(--muted); }
   filter: drop-shadow(0 10px 12px rgba(40, 20, 8, 0.22));
 }
 
+/* ───────── Torneo compartido (/t/<código>) ───────── */
+.torneo { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
+.torneo h3 { margin: 0 0 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+.torneo__campeon {
+  border-radius: var(--r-card); background: var(--mostaza); color: var(--on-card);
+  padding: 20px 24px; display: flex; flex-direction: column; gap: 2px;
+}
+.torneo__campeon strong { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.torneo__grupos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.torneo__tabla { border: 1.5px solid var(--line); border-radius: var(--r-card); padding: 16px 18px; }
+.torneo__tabla table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 15px; }
+.torneo__tabla th { font-size: 12.5px; font-weight: 600; color: var(--muted); text-align: right; padding: 4px 6px; }
+.torneo__tabla td { text-align: right; padding: 6px; border-top: 1px solid var(--line); }
+.torneo__tabla .nombre { text-align: left; width: 100%; }
+.torneo__tabla tr.clasifica td:first-child { box-shadow: inset 3px 0 0 var(--ok); }
+.cuadro { overflow-x: auto; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 8px; }
+.cuadro__lienzo { position: relative; }
+.cuadro__lienzo svg { position: absolute; inset: 0; }
+.cuadro__lienzo path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linejoin: round; }
+.cuadro__lienzo path.fuerte { stroke: var(--ink); stroke-width: 2.2; }
+.cuadro__ronda { position: absolute; top: 0; font-size: 13px; font-weight: 700; }
+.cuadro__llave {
+  position: absolute; display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  border: 1.5px solid var(--line); border-radius: 18px; background: var(--bg); padding: 0 14px;
+}
+.cuadro__fila { display: flex; justify-content: space-between; gap: 8px; font-size: 14.5px; font-weight: 600; }
+.cuadro__fila .n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cuadro__fila .g { font-weight: 800; font-variant-numeric: tabular-nums; }
+.cuadro__fila.gana { font-weight: 800; }
+.cuadro__fila.pierde { opacity: 0.45; }
+.cuadro__bye { font-size: 12.5px; color: var(--muted); }
+
 /* ───────── Responsive ───────── */
 
 @media (max-width: 900px) {
@@ -456,8 +492,9 @@ table.data th { font-size: 13px; font-weight: 700; color: var(--muted); }
   .tools { grid-template-columns: 1fr; }
   .tool, .tool--lg { grid-column: span 1; min-height: 186px; }
   /* En una columna la tarjeta es angosta: la arcilla no debe tapar el texto. */
-  .tool p, .tool--lg p { max-width: 21ch; }
-  .tool--lg img { width: 108px; height: 108px; right: -12px; bottom: -8px; }
+  .tool, .tool--lg { padding-right: 100px; }
+  .tool img { width: 72px; height: 72px; right: 14px; top: 14px; }
+  .tool--lg img { width: 80px; height: 80px; right: 14px; top: auto; bottom: 14px; }
   .facts, .facts--3 { grid-template-columns: 1fr; }
   .hero__cta .btn { width: 100%; }
 }

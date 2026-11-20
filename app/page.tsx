@@ -33,7 +33,7 @@ const juegos: Juego[] = [
     kind: "Anotador",
     name: "Generala",
     desc: "Dados y planilla juntos: fijás los que te sirven y te sugiere dónde anotar.",
-    img: "/assets/img/clay/dado.webp",
+    img: "/assets/img/clay/generala.webp",
     tone: "crema",
   },
   {

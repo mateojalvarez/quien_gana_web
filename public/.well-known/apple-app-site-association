@@ -2,9 +2,22 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["X77V463WTL.com.mateoalvarez.quiengana"],
+        "appIDs": [
+          "X77V463WTL.com.mateoalvarez.quiengana"
+        ],
         "components": [
-          { "/": "/g/*", "comment": "Invitaciones a grupos" }
+          {
+            "/": "/g/*",
+            "comment": "Invitaciones a grupos"
+          },
+          {
+            "/": "/p/*",
+            "comment": "Salas del Pulsador"
+          },
+          {
+            "/": "/t/*",
+            "comment": "Torneos compartidos"
+          }
         ]
       }
     ]

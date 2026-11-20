@@ -3,3 +3,6 @@
 # carga nunca; esto es el camino para todos los demás casos. El sitio es un
 # export estático, así que no hay ruta dinámica: el código pasa como query.
 /g/* /invitacion/?code=:splat 302
+# Sala del Pulsador (el QR de la sala) y torneo compartido: mismo criterio.
+/p/* /pulsador/?code=:splat 302
+/t/* /torneo/?code=:splat 302

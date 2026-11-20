@@ -186,6 +186,23 @@ export default function Soporte() {
                     partidas. Ese nombre queda sólo en tu teléfono y no lo ve el resto del grupo.
                   </p>
                 </P>
+                <P q="¿Cómo me ven los demás en el grupo?">
+                  <p>
+                    Con tu <strong>apodo</strong>, si elegiste uno en <strong>Perfil</strong>. Si no,
+                    con el nombre y la foto de la cuenta que vinculaste (Apple o Google).
+                  </p>
+                </P>
+                <P q="¿Puedo compartir un torneo?">
+                  <p>
+                    Sí. Si lo creaste con un grupo, todos sus integrantes ya lo ven en vivo. Para
+                    sumar a otros, entrá al torneo → <strong>Compartir y permisos</strong> y pasá el
+                    enlace o el QR: lo pueden seguir desde la app o desde la web, sin cuenta.
+                  </p>
+                  <p>
+                    Desde esa misma pantalla elegís quién, además de mirar, puede{" "}
+                    <strong>cargar resultados</strong>.
+                  </p>
+                </P>
                 <P q="Toqué la invitación y no pasó nada.">
                   <p>
                     Revisá que tengas la app instalada y que el enlace no esté vencido. Siempre
@@ -227,6 +244,12 @@ export default function Soporte() {
                     deshacer la última ronda, terminar la partida o eliminarla.
                   </p>
                 </P>
+                <P q="¿Cómo borro o renombro una partida desde la lista?">
+                  <p>
+                    En Inicio, <strong>mantené apretada</strong> la tarjeta de la partida: se abre un
+                    menú para abrirla, cambiarle el nombre, terminarla o reabrirla, y eliminarla.
+                  </p>
+                </P>
               </div>
             </Tema>
 
@@ -251,8 +274,9 @@ export default function Soporte() {
                     entra a la partida al volver.
                   </p>
                   <p>
-                    Por ahora es sólo para Truco. Reloj, Corazones y Generala van a llegar en una
-                    próxima versión.
+                    El <strong>Reloj</strong> también: con la pantalla bloqueada ves la cuenta
+                    regresiva y, al terminar, suena y vibra (también en el Apple Watch). Corazones y
+                    Generala van a llegar en una próxima versión.
                   </p>
                 </P>
                 <P q="¿Qué hace Generala además de anotar?">
@@ -273,6 +297,11 @@ export default function Soporte() {
                     empezar, la app sincroniza los relojes para que el orden de los toques sea
                     fiel; si la conexión viene inestable te avisa y conviene pasar a wifi.
                   </p>
+                  <p>
+                    Para entrar más rápido, el anfitrión muestra un <strong>QR</strong> que se
+                    escanea con la cámara. Y si activa <strong>Visible en esta red</strong>, los que
+                    estén en el mismo wifi con Pulsador abierto ven la sala aparecer sola.
+                  </p>
                 </P>
                 <P q="¿Para qué sirve Equipos?">
                   <p>
@@ -291,6 +320,12 @@ export default function Soporte() {
                   <p>
                     La app usa la respuesta háptica del sistema. Verificá en Ajustes de iOS →
                     Sonidos y vibración que la “Respuesta háptica del sistema” esté activada.
+                  </p>
+                  <p>
+                    Para el final del Reloj con la pantalla bloqueada, aceptá el permiso de
+                    <strong> alarmas</strong> (iOS 26) o de <strong>notificaciones</strong> la primera
+                    vez que lo usás: es lo que lo hace sonar y vibrar fuerte con el teléfono en el
+                    bolsillo.
                   </p>
                 </P>
               </div>
